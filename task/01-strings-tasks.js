@@ -303,10 +303,8 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-   
-  
     const symbolMap = new Map();
-    symbolMap.set("A", 0); 
+    symbolMap.set("A", 0);
     symbolMap.set("J", 10);
     symbolMap.set("Q", 11);
     symbolMap.set("K", 12);
@@ -316,7 +314,8 @@ function getCardId(value) {
     symbolMap.set("♠", 3);
 
     const suit = symbolMap.get(value.slice(-1));
-    const number = symbolMap.get(value.slice(0,-1)) ?? ( Number(value.slice(0,-1)) - 1 );
+    const number =
+        symbolMap.get(value.slice(0, -1)) ?? Number(value.slice(0, -1)) - 1;
     const result = 13 * suit + number;
     return result;
 }

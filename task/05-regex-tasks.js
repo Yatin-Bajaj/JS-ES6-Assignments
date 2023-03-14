@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /********************************************************************************************
  *                                                                                          *
@@ -6,7 +6,6 @@
  * https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions           *
  * https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285                                                                       *
  ********************************************************************************************/
-
 
 /**
  * Returns the regexp that matches a GUID string representation
@@ -31,10 +30,10 @@
  * @return {RegExp}
  */
 function getRegexForGuid() {
-   const pattern = /{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}}/
+   const pattern =
+      /{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}}/;
    return pattern;
 }
-
 
 /**
  * Returns the regexp that matches all the strings from first column
@@ -54,10 +53,9 @@ function getRegexForGuid() {
  *
  */
 function getRegexForPitSpot() {
-   const pattern = /^(pi|s|r)/
+   const pattern = /^(pi|s|r)/;
    return pattern;
 }
-
 
 /**
  * Returns the regexp that matches all IPv4 strings in
@@ -74,10 +72,11 @@ function getRegexForPitSpot() {
  * @return {RegExp}
  */
 function getRegexForIPv4() {
-   const pattern = new RegExp('^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$')
+   const pattern = new RegExp(
+      "^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
+   );
    return pattern;
 }
-
 
 /**
  * Returns the regexp that matches all SSN (Social Security Number) codes in
@@ -94,10 +93,9 @@ function getRegexForIPv4() {
  * @return {RegExp}
  */
 function getRegexForSSN() {
-   const pattern = /^(?!000)\d{3}-(?!00)\d{2}-(?!0000)\d{4}$/
-   return pattern
+   const pattern = /^(?!000)\d{3}-(?!00)\d{2}-(?!0000)\d{4}$/;
+   return pattern;
 }
-
 
 /**
  * Returns the password validator regex.
@@ -122,17 +120,18 @@ function getRegexForSSN() {
  * /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/
  */
 function getPasswordValidator(minLength) {
-   const pattern =new RegExp(`^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{${minLength},}$`)
-   console.log(pattern)
+   const pattern = new RegExp(
+      `^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{${minLength},}$`
+   );
+   console.log(pattern);
    return pattern;
-   throw new Error('Not implemented');
+   throw new Error("Not implemented");
 }
 
-
 module.exports = {
-    getRegexForGuid: getRegexForGuid,
-    getRegexForPitSpot: getRegexForPitSpot,
-    getRegexForIPv4: getRegexForIPv4,
-    getRegexForSSN: getRegexForSSN,
-    getPasswordValidator: getPasswordValidator
+   getRegexForGuid: getRegexForGuid,
+   getRegexForPitSpot: getRegexForPitSpot,
+   getRegexForIPv4: getRegexForIPv4,
+   getRegexForSSN: getRegexForSSN,
+   getPasswordValidator: getPasswordValidator,
 };

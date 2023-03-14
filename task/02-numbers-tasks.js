@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /********************************************************************************************
  *                                                                                          *
@@ -8,7 +8,6 @@
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math    *
  *                                                                                          *
  ********************************************************************************************/
-
 
 /**
  * Returns an area of a rectangle given by width and heigth.
@@ -26,7 +25,6 @@ function getRectangleArea(width, height) {
     return area;
 }
 
-
 /**
  * Returns a circumference of circle given by radius.
  *
@@ -39,7 +37,7 @@ function getRectangleArea(width, height) {
  *   0    => 0
  */
 function getCicleCircumference(radius) {
-    const circumference =2 * Math.PI * radius
+    const circumference = 2 * Math.PI * radius;
     return circumference;
 }
 
@@ -56,10 +54,9 @@ function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-    const avg = (value1/2 + value2/2);
-    
-    return avg;
+    const avg = value1 / 2 + value2 / 2;
 
+    return avg;
 }
 
 /**
@@ -78,11 +75,10 @@ function getAverage(value1, value2) {
  *   (-5,0) (10,-10) => 18.027756377319946
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
-    const value1 = Math.pow((x2-x1),2)
-    const value2 = Math.pow((y2-y1),2);
+    const value1 = Math.pow(x2 - x1, 2);
+    const value2 = Math.pow(y2 - y1, 2);
     const result = Math.sqrt(value1 + value2);
     return result;
-    
 }
 
 /**
@@ -98,10 +94,9 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
-    const result = (-b/a);
+    const result = -b / a;
     return result;
 }
-
 
 /**
  * Returns an angle (in radians) between two vectors given by xi and yi, coordinates in Cartesian plane
@@ -117,11 +112,13 @@ function getLinearEquationRoot(a, b) {
  *   (1,0) (0,1)     => π/2
  *   (0,1) (0,-1)    => π
  *   (0,-1) (1,0)    => π/2
- *   (0,1) (0,1)     => 0 
+ *   (0,1) (0,1)     => 0
  *   (0,1) (1,2)     => 0
  */
 function getAngleBetweenVectors(x1, y1, x2, y2) {
-    return Math.acos(((x1*x2+y1*y2)/(Math.hypot(x1, y1)*Math.hypot(x2, y2))));
+    return Math.acos(
+        (x1 * x2 + y1 * y2) / (Math.hypot(x1, y1) * Math.hypot(x2, y2))
+    );
 }
 
 /**
@@ -137,9 +134,8 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     0     => 0
  */
 function getLastDigit(value) {
-    return value%10;
+    return value % 10;
 }
-
 
 /**
  * Returns a number by given string representation.
@@ -153,8 +149,8 @@ function getLastDigit(value) {
  * '-525.5'     => -525.5
  */
 function parseNumberFromString(value) {
-   const number = +value;
-   return number;
+    const number = +value;
+    return number;
 }
 
 /**
@@ -170,8 +166,8 @@ function parseNumberFromString(value) {
  *   3,3,3   => 5.196152422706632
  *   1,2,3   => 3.741657386773941
  */
-function getParallelipidedDiagonal(a,b,c) {
-    const result = Math.sqrt((a*a)+(b*b)+(c*c));
+function getParallelipidedDiagonal(a, b, c) {
+    const result = Math.sqrt(a * a + b * b + c * c);
     return result;
 }
 
@@ -181,7 +177,7 @@ function getParallelipidedDiagonal(a,b,c) {
  * @param {number} num
  * @param {number} pow
  * @return {number}
- *  
+ *
  * @example:
  *   1234, 0  => 1234
  *   1234, 1  => 1230
@@ -193,11 +189,11 @@ function getParallelipidedDiagonal(a,b,c) {
  *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
-    if(pow > 3){
+    if (pow > 3) {
         return undefined;
     }
-    const myArray = [1,10,100,1000];
-    const rem = Math.floor(num/myArray[pow]);
+    const myArray = [1, 10, 100, 1000];
+    const rem = Math.floor(num / myArray[pow]);
     const result = rem * myArray[pow];
     return result;
 }
@@ -208,7 +204,7 @@ function roundToPowerOfTen(num, pow) {
  *
  * @param {number} n
  * @return {bool}
- * 
+ *
  * @example:
  *   4 => false
  *   5 => true
@@ -220,13 +216,12 @@ function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 function isPrime(n) {
-    for(let index=2;index<=n/2;index++){
-        if(n%index == 0){
+    for (let index = 2; index <= n / 2; index++) {
+        if (n % index == 0) {
             return false;
         }
     }
     return true;
-
 }
 
 /**
@@ -245,11 +240,11 @@ function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-    if(!value){
-        return def
+    if (!value) {
+        return def;
     }
     const num = Number(value);
-    if(isNaN(num)){
+    if (isNaN(num)) {
         return def;
     }
     return num;
@@ -267,5 +262,5 @@ module.exports = {
     getParallelipidedDiagonal: getParallelipidedDiagonal,
     roundToPowerOfTen: roundToPowerOfTen,
     isPrime: isPrime,
-    toNumber: toNumber
+    toNumber: toNumber,
 };

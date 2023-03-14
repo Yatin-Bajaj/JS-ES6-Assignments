@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**********************************************************************************************
  *                                                                                            *
@@ -9,7 +9,6 @@
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures                           *
  *                                                                                            *
  **********************************************************************************************/
-
 
 /**
  * Returns the functions composition of two specified functions f(x) and g(x).
@@ -27,8 +26,8 @@
  */
 function getComposition(f, g) {
     return function (x) {
-        return f(g(x))
-    }
+        return f(g(x));
+    };
 }
 
 /**
@@ -50,9 +49,8 @@ function getComposition(f, g) {
 function getPowerFunction(exponent) {
     return function (X) {
         return X ** exponent;
-    }
+    };
 }
-
 
 /**
  * Returns the polynom function of one argument based on specified coefficients.
@@ -72,26 +70,23 @@ function getPolynom() {
     const arg = Array.from(arguments);
     if (arguments.length === 3) {
         return function (x) {
-            return ((arg[0] * (x ** 2)) + (arg[1] * x) + arg[2])
-        }
+            return arg[0] * x ** 2 + arg[1] * x + arg[2];
+        };
     }
 
     if (arguments.length === 2) {
         return function (x) {
-            return ((arg[0] * x) + arg[1])
-        }
+            return arg[0] * x + arg[1];
+        };
     }
 
     if (arguments.length === 1) {
         return function (x) {
-            return (arg[0]);
-        }
+            return arg[0];
+        };
     }
     return null;
-
-
 }
-
 
 /**
  * Memoizes passed function and returns function
@@ -118,9 +113,8 @@ function memoize(func) {
         } else {
             return result;
         }
-    }
+    };
 }
-
 
 /**
  * Returns the function trying to call the passed function and if it throws,
@@ -144,12 +138,12 @@ function retry(func, attempts) {
             try {
                 return func.apply(this, arguments);
             } catch (err) {
-               if(index === attempts){
-                return attempts;
-               }
+                if (index === attempts) {
+                    return attempts;
+                }
             }
         }
-    }   
+    };
 }
 
 // Example to use above logic
@@ -194,15 +188,13 @@ function logger(func, logFunc) {
         var str = JSON.stringify(arr);
         //console.log(str);
         str = str.slice(1, -1);
-        str = func.name + '(' + str + ')';
+        str = func.name + "(" + str + ")";
         logFunc(str + " starts");
         var res = func.apply(this, arr);
         logFunc(str + " ends");
         return res;
-    }
-
+    };
 }
-
 
 /**
  * Return the function with partial applied arguments
@@ -218,22 +210,24 @@ function logger(func, logFunc) {
  *   partialUsingArguments(fn, 'a','b','c','d')() => 'abcd'
  */
 function partialUsingArguments(fn) {
-    let arr = []
+    let arr = [];
     if (arguments.length > 1) {
         for (let index = 1; index < arguments.length; index++) {
-            arr.push(arguments[index])
+            arr.push(arguments[index]);
         }
     }
     return function (...args) {
-        args.forEach(item => arr.push(item));
+        args.forEach((item) => arr.push(item));
         var result = arr.reduce((prev, curr) => prev + curr, "");
         return result;
-    }
+    };
 }
-var fn = function (x1, x2, x3, x4) { return x1 + x2 + x3 + x4; };
-console.log(partialUsingArguments(fn, 'a')('b', 'c', 'd'))
-console.log(partialUsingArguments(fn, 'a', 'b')('c', 'd'))
-console.log(partialUsingArguments(fn, 'a', 'b', 'c', 'd')())
+var fn = function (x1, x2, x3, x4) {
+    return x1 + x2 + x3 + x4;
+};
+console.log(partialUsingArguments(fn, "a")("b", "c", "d"));
+console.log(partialUsingArguments(fn, "a", "b")("c", "d"));
+console.log(partialUsingArguments(fn, "a", "b", "c", "d")());
 /**
  * Returns the id generator function that returns next integer starting from specified number every time when invoking.
  *
@@ -251,19 +245,16 @@ console.log(partialUsingArguments(fn, 'a', 'b', 'c', 'd')())
  *   getId10() => 11
  */
 function getIdGeneratorFunction(startFrom) {
-
     // return function* generator() {
     //     while (true) {
     //         yield (++startFrom)
     //     }
     // }
 
-    return function(){
+    return function () {
         return startFrom++;
-    }
-    
+    };
 }
-
 
 module.exports = {
     getComposition: getComposition,

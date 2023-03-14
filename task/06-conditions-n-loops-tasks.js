@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**************************************************************************************************
  *                                                                                                *
@@ -7,7 +7,6 @@
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration              *
  *                                                                                                *
  **************************************************************************************************/
-
 
 /**
  * Returns the 'Fizz','Buzz' or an original number using the following rules:
@@ -31,15 +30,14 @@
  */
 function getFizzBuzz(num) {
     if (num % 3 == 0 && num % 5 == 0) {
-        return 'FizzBuzz'
+        return "FizzBuzz";
     } else if (num % 3 == 0) {
-        return 'Fizz';
+        return "Fizz";
     } else if (num % 5 == 0) {
-        return 'Buzz';
+        return "Buzz";
     }
     return num;
 }
-
 
 /**
  * Returns the factorial of the specified integer n.
@@ -59,7 +57,6 @@ function getFactorial(n) {
     }
     return fact;
 }
-
 
 /**
  * Returns the sum of integer numbers between n1 and n2 (inclusive).
@@ -81,7 +78,6 @@ function getSumBetweenNumbers(n1, n2) {
     return sum;
 }
 
-
 /**
  * Returns true, if a triangle can be built with the specified sides a,b,c and false in any other ways.
  *
@@ -97,33 +93,32 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-    if ((a + b > c) && (a + c > b) && (b + c > a)) {
+    if (a + b > c && a + c > b && b + c > a) {
         return true;
     }
     return false;
 }
 
-
 /**
  * Returns true, if two specified axis-aligned rectangles overlap, otherwise false.
- * Each rectangle representing by object 
+ * Each rectangle representing by object
  *  {
  *     top: 5,
  *     left: 5,
  *     width: 20,
  *     height: 10
  *  }
- * 
+ *
  *  (5;5)
- *     -------------  
- *     |           | 
+ *     -------------
+ *     |           |
  *     |           |  height = 10
- *     ------------- 
- *        width=20    
- * 
+ *     -------------
+ *        width=20
+ *
  * NOTE: Please use canvas coordinate space (https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes#The_grid),
  * it differs from Cartesian coordinate system.
- * 
+ *
  * @param {object} rect1
  * @param {object} rect2
  * @return {bool}
@@ -131,36 +126,37 @@ function isTriangle(a, b, c) {
  * @example:
  *   { top: 0, left: 0, width: 10, height: 10 },
  *   { top: 5, left: 5, width: 20, height: 20 }    =>  true
- * 
+ *
  *   { top: 0, left: 0, width: 10, height: 10 },
  *   { top:20, left:20, width: 20, height: 20 }    =>  false
- *  
+ *
  */
 function doRectanglesOverlap(rect1, rect2) {
-    return rect1.top + rect1.height > rect2.top
-        && rect1.left + rect1.width > rect2.left
-        && rect2.top + rect2.height > rect1.top
-        && rect2.left + rect2.width > rect1.left;
+    return (
+        rect1.top + rect1.height > rect2.top &&
+        rect1.left + rect1.width > rect2.left &&
+        rect2.top + rect2.height > rect1.top &&
+        rect2.left + rect2.width > rect1.left
+    );
 }
-
 
 /**
  * Returns true, if point lies inside the circle, otherwise false.
- * Circle is an object of 
+ * Circle is an object of
  *  {
  *     center: {
- *       x: 5,       
+ *       x: 5,
  *       y: 5
- *     },        
+ *     },
  *     radius: 20
  *  }
- * 
- * Point is object of 
+ *
+ * Point is object of
  *  {
  *     x: 5,
  *     y: 5
  *  }
- * 
+ *
  * @param {object} circle
  * @param {object} point
  * @return {bool}
@@ -168,16 +164,18 @@ function doRectanglesOverlap(rect1, rect2) {
  * @example:
  *   { center: { x:0, y:0 }, radius:10 },  { x:0, y:0 }     => true
  *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
- *   
+ *
  */
 function isInsideCircle(circle, point) {
-    const lengthBtwCenterAndPoint = Math.sqrt(Math.pow((point.x - circle.center.x), 2) + Math.pow((point.y - circle.center.y), 2));
+    const lengthBtwCenterAndPoint = Math.sqrt(
+        Math.pow(point.x - circle.center.x, 2) +
+        Math.pow(point.y - circle.center.y, 2)
+    );
     if (lengthBtwCenterAndPoint < circle.radius) {
         return true;
     }
     return false;
 }
-
 
 /**
  * Returns the first non repeated char in the specified strings otherwise returns null.
@@ -207,7 +205,6 @@ function findFirstSingleChar(str) {
     return null;
 }
 
-
 /**
  * Returns the string representation of math interval, specified by two points and include / exclude flags.
  * See the details: https://en.wikipedia.org/wiki/Interval_(mathematics)
@@ -231,15 +228,14 @@ function findFirstSingleChar(str) {
  */
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
     let string;
-    let min = Math.min(a, b)
-    let max = Math.max(a, b)
+    let min = Math.min(a, b);
+    let max = Math.max(a, b);
 
-    string = isStartIncluded ? `[${min}, ` : `(${min}, `
-    string += isEndIncluded ? `${max}]` : `${max})`
+    string = isStartIncluded ? `[${min}, ` : `(${min}, `;
+    string += isEndIncluded ? `${max}]` : `${max})`;
 
     return string;
 }
-
 
 /**
  * Reverse the specified string (put all chars in reverse order)
@@ -254,10 +250,8 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-
-    return str.split("").reverse().join('');
+    return str.split("").reverse().join("");
 }
-
 
 /**
  * Reverse the specified integer number (put all digits in reverse order)
@@ -277,13 +271,12 @@ function reverseInteger(num) {
 
     while (num !== 0) {
         remainder = num % 10;
-        reversed = (reversed * 10) + remainder;
+        reversed = reversed * 10 + remainder;
         num = Math.trunc(num / 10);
     }
 
     return reversed;
 }
-
 
 /**
  * Validates the CCN (credit card number) and return true if CCN is valid
@@ -311,16 +304,15 @@ function isCreditCardNumber(ccn) {
     while (ccn > 0) {
         let rem = ccn % 10;
         if (double) {
-            rem = (rem * 2)
+            rem = rem * 2;
             rem = getDigitalRoot(rem);
         }
         double = !double;
         result = result + rem;
         ccn = Math.floor(ccn / 10);
     }
-    return (result % 10 === 0);
+    return result % 10 === 0;
 }
-
 
 /**
  * Returns the digital root of integer:
@@ -339,8 +331,8 @@ function isCreditCardNumber(ccn) {
 function getSum(num) {
     let sum = 0;
     while (num > 0) {
-        sum = sum + num % 10;
-        num = Math.floor(num / 10)
+        sum = sum + (num % 10);
+        num = Math.floor(num / 10);
     }
     return sum;
 }
@@ -351,7 +343,6 @@ function getDigitalRoot(num) {
     }
     return sum;
 }
-
 
 /**
  * Returns true if the specified string has the balanced brackets and false otherwise.
@@ -372,14 +363,14 @@ function getDigitalRoot(num) {
  *   '[[][][[]]]' => true
  *   '[[][]][' => false
  *   '{)' = false
- *   '{[(<{[]}>)]}' = true 
+ *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
     // throw new Error('Not implemented');
 
-    const openBraces = ['[', '(', '{', "<"]
-    const closeBraces = [']', ')', '}', ">"]
-    const stack = []
+    const openBraces = ["[", "(", "{", "<"];
+    const closeBraces = ["]", ")", "}", ">"];
+    const stack = [];
     for (let bracket of str) {
         if (openBraces.includes(bracket)) {
             stack.push(bracket);
@@ -390,8 +381,6 @@ function isBracketsBalanced(str) {
                 return false;
             }
         }
-
-
     }
     return stack.length === 0;
 }
@@ -431,31 +420,29 @@ function timespanToHumanString(startDate, endDate) {
     const timeDiff = endDate.getTime() - startDate.getTime();
     const seconds = Math.ceil(timeDiff / 1000);
     if (seconds <= 45) {
-        return 'a few seconds ago';
+        return "a few seconds ago";
     } else if (seconds <= 90) {
-        return 'a minute ago';
+        return "a minute ago";
     } else if (seconds <= 2700) {
         return `${Math.round((seconds - 1) / 60)} minutes ago`;
     } else if (seconds <= 5400) {
-        return 'an hour ago';
+        return "an hour ago";
     } else if (seconds <= 79200) {
         return `${Math.round((seconds - 1) / 3600)} hours ago`;
     } else if (seconds <= 129600) {
-        return 'a day ago';
+        return "a day ago";
     } else if (seconds <= 2160000) {
         return `${Math.round((seconds - 1) / 86400)} days ago`;
     } else if (seconds <= 3888000) {
-        return 'a month ago';
+        return "a month ago";
     } else if (seconds <= 29808000) {
         return `${Math.round((seconds - 1) / 2592000)} months ago`;
     } else if (seconds <= 47088000) {
-        return 'a year ago';
+        return "a year ago";
     } else {
         return `${Math.round((seconds - 1) / 31536000)} years ago`;
     }
-
 }
-
 
 /**
  * Returns the string with n-ary (binary, ternary, etc, where n<=10) representation of specified number.
@@ -479,12 +466,11 @@ function timespanToHumanString(startDate, endDate) {
 function toNaryString(num, n) {
     let result = "";
     while (num > 0) {
-        result = num % n + result;
-        num = Math.floor(num / n)
+        result = (num % n) + result;
+        num = Math.floor(num / n);
     }
     return result;
 }
-
 
 /**
  * Returns the commom directory path for specified array of full filenames.
@@ -504,12 +490,11 @@ function getCommonDirectoryPath(pathes) {
         for (let j = 1; j < pathes.length; j++) {
             if (pathes[0].charAt(i) !== pathes[j].charAt(i)) {
                 result = pathes[0].slice(0, i);
-                return result.slice(0, result.lastIndexOf('/') + 1);
+                return result.slice(0, result.lastIndexOf("/") + 1);
             }
         }
     }
 }
-
 
 /**
  * Returns the product of two specified matrixes.
@@ -532,16 +517,15 @@ function getCommonDirectoryPath(pathes) {
 function getMatrixProduct(m1, m2) {
     let prod = new Array(m1.length);
     for (let i = 0; i < m1.length; i++) {
-        prod[i] = new Array(m2[0].length).fill(0)
+        prod[i] = new Array(m2[0].length).fill(0);
         for (let j = 0; j < m2[0].length; j++) {
             for (let k = 0; k < m1[0].length; k++) {
-                prod[i][j] = prod[i][j] + (m1[i][k] * m2[k][j]);
+                prod[i][j] = prod[i][j] + m1[i][k] * m2[k][j];
             }
         }
     }
     return prod;
 }
-
 
 /**
  * Returns the evaluation of the specified tic-tac-toe position.
@@ -575,17 +559,19 @@ function getMatrixProduct(m1, m2) {
  */
 function evaluateTicTacToePosition(position) {
     function checkCombination(v1, v2, v3) {
-        return v1 === v2 && v2 === v3 && v1 != undefined
+        return v1 === v2 && v2 === v3 && v1 != undefined;
     }
     for (let i = 0; i < 3; i++) {
-        if (checkCombination(position[i][0], position[i][1], position[i][2])) return position[i][0];
-        if (checkCombination(position[0][i], position[1][i], position[2][i])) return position[0][i];
-       
+        if (checkCombination(position[i][0], position[i][1], position[i][2]))
+            return position[i][0];
+        if (checkCombination(position[0][i], position[1][i], position[2][i]))
+            return position[0][i];
     }
-    if (checkCombination(position[0][0], position[1][1], position[2][2])) return position[0][0];
-    if (checkCombination(position[0][2], position[1][1], position[2][0])) return position[0][2];
+    if (checkCombination(position[0][0], position[1][1], position[2][2]))
+        return position[0][0];
+    if (checkCombination(position[0][2], position[1][1], position[2][0]))
+        return position[0][2];
 }
-
 
 module.exports = {
     getFizzBuzz: getFizzBuzz,
@@ -605,5 +591,5 @@ module.exports = {
     toNaryString: toNaryString,
     getCommonDirectoryPath: getCommonDirectoryPath,
     getMatrixProduct: getMatrixProduct,
-    evaluateTicTacToePosition: evaluateTicTacToePosition
+    evaluateTicTacToePosition: evaluateTicTacToePosition,
 };
